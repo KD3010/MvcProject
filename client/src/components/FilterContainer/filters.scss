@@ -1,0 +1,46 @@
+.filter-form {
+  flex-basis: 20%;
+  border-right: 2px solid grey;
+  margin: 0 0 1rem 1rem;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &-heading {
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  &-btn {
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    &:active {
+      transform: translate(2px);
+    }
+  }
+
+  #priceRange {
+    margin-top: 0.5rem;
+    width: 80%;
+    height: 5px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .filter-form {
+    flex-basis: 100%;
+    border: none;
+  }
+}

@@ -1,0 +1,29 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.405);
+  border-radius: 10px;
+  transition: all 0.3s;
+
+  &-image {
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: auto;
+  }
+
+  &-description {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+
+    .fa-star {
+      color: rgb(252, 227, 42);
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.405);
+    transform: scale(1.02);
+  }
+}
