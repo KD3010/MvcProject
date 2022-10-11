@@ -1,1 +1,0 @@
-SELECT *, (SELECT GROUP_CONCAT(pim.ImageUrl SEPARATOR ', ') FROM productimage pim WHERE p.ProductID = pim.ProductID) as ProductImages FROM product p;

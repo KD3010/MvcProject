@@ -4,17 +4,17 @@ import './productcard.scss';
 const ProductCard = (props) => {
   return (
     <div className="product-card">
-      <img src={`${props.Thumbnail}`} alt="Product Image" className="product-card-image" />
+      <img src={`${props.thumbnail}`} alt="Product Image" className="product-card-image" />
       <div className="product-card-description">
-        <h4 className="title">{props.Title}</h4>
-        <p className="description">{props.Description}</p>
+        <h4 className="title">{props.title}</h4>
+        <p className="description">{props.description}</p>
         <br />
         <p className="price-details">
-          <b>${props.Price}</b> |{' '}
-          <span style={{ color: '#5BB318' }}>Offer: {props.DiscountPercentage}%</span>
+          <b>${props.price}</b> |{' '}
+          <span style={{ color: '#5BB318' }}>Offer: {props.discountPercentage}%</span>
         </p>
         <p className="ratings">
-          Ratings : {props.Rating}/5 <i className="fa-solid fa-star"></i>
+          Ratings : {props.rating}/5 <i className="fa-solid fa-star"></i>
         </p>
       </div>
     </div>
