@@ -15,7 +15,6 @@ public class products : Controller
     }
     public IPagedList<dynamic> Index(string? brand, string? category, int? minPrice, int? maxPrice, int page = 1)
     {
-        
         var data = _productRepository.GetAllProducts(brand, category, minPrice, maxPrice);
         return data.ToPagedList(page, LIMIT);
     }

@@ -15,6 +15,6 @@ public class ProductModel
     public string brand {get; set;}
     public string category {get; set;}
     public string thumbnail {get; set;}
-    public ICollection<ProductImage> ProductImages {get; set;}
+    public string ProductImages {get; set;}
 
 }

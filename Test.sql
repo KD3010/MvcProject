@@ -1,0 +1,1 @@
+SELECT *, (SELECT JSON_ARRAYAGG(pim.ImageUrl) FROM productimage pim WHERE p.ProductID = pim.ProductID) as ProductImages FROM product p;
