@@ -1,6 +1,5 @@
 using MySql.Data.MySqlClient;
 using Dapper;
-using System.Text.Json;
 
 using MvcProject.Models;
 namespace MvcProject.Repository;
@@ -14,7 +13,8 @@ public class ProductRepository
     public string ConcatString(string property) 
     {
         String[] arr = property.Split(",");
-        for(int i = 0; i < arr.Count(); i++) {
+        for(int i = 0; i < arr.Count(); i++) 
+        {
             arr[i] = "\"" + arr[i] + "\"";
         }
         string propertyNew = string.Join(", ", arr);
@@ -24,7 +24,7 @@ public class ProductRepository
     // Builds the query that has to be run in database
     public string BuildQuery(string? brand, string? category, int? minPrice, int? maxPrice)
     {
-        string query = "SELECT *, (SELECT JSON_ARRAYAGG(pim.ImageUrl) FROM productimage pim WHERE p.ProductID = pim.ProductID) as ProductImages FROM product p ";
+        string query = "SELECT *, (SELECT GROUP_CONCAT(pim.ImageUrl SEPARATOR ', ') FROM productimage pim WHERE p.ProductID = pim.ProductID) as ProductImages FROM product p ";
 
         if(brand == null && category == null && minPrice == null && maxPrice == null)
         {
@@ -63,8 +63,21 @@ public class ProductRepository
         string query = BuildQuery(brand, category, minPrice, maxPrice);
 
         var productData = connection.Query<ProductModel>(query);
+        var products = productData.Select((obj, index) => new ProductModel{
+            ProductID = obj.ProductID,
+            title = obj.title,
+            description = obj.description,
+            brand = obj.brand,
+            price = obj.price,
+            category = obj.category,
+            rating = obj.rating,
+            discountPercentage = obj.discountPercentage,
+            stock = obj.stock,
+            thumbnail = obj.thumbnail,
+            ProductImages = !string.IsNullOrEmpty(obj.ProductImages) ? obj.ProductImages.Split(", ") : null
+        }).ToList<ProductModel>();
 
-        return productData.ToList();
+        return products;
     }
 }
 

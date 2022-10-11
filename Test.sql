@@ -1,1 +1,1 @@
-SELECT *, (SELECT JSON_ARRAYAGG(pim.ImageUrl) FROM productimage pim WHERE p.ProductID = pim.ProductID) as ProductImages FROM product p;
+SELECT *, (SELECT GROUP_CONCAT(pim.ImageUrl SEPARATOR ', ') FROM productimage pim WHERE p.ProductID = pim.ProductID) as ProductImages FROM product p;

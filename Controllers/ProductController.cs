@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MvcProject.Repository;
+using MvcProject.Models;
 using PagedList;
 
 namespace MvcProject.Controllers;
@@ -13,7 +14,7 @@ public class products : Controller
     {
         _productRepository = new ProductRepository();
     }
-    public IPagedList<dynamic> Index(string? brand, string? category, int? minPrice, int? maxPrice, int page = 1)
+    public IPagedList<ProductModel> Index(string? brand, string? category, int? minPrice, int? maxPrice, int page = 1)
     {
         var data = _productRepository.GetAllProducts(brand, category, minPrice, maxPrice);
         return data.ToPagedList(page, LIMIT);
