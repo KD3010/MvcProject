@@ -18,12 +18,10 @@ const ProductList = ({ url }) => {
     if (data.length === 0) fetchData();
   });
 
-  console.log(data);
-
   return (
     <div className="product-container">
-      {data.map((obj) => (
-        <ProductCard key={obj.ProductId} {...obj} />
+      {data.map((obj, ind) => (
+        <ProductCard key={ind} {...obj} />
       ))}
     </div>
   );

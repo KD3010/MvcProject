@@ -69,3 +69,5 @@ E:\Carwale Training\MvcProject\bin\Debug\net6.0\PagedList.dll
 E:\Carwale Training\MvcProject\bin\Debug\net6.0\client\package-lock.json
 E:\Carwale Training\MvcProject\bin\Debug\net6.0\client\package.json
 E:\Carwale Training\MvcProject\bin\Debug\net6.0\client\public\manifest.json
+E:\Carwale Training\MvcProject\bin\Debug\net6.0\package-lock.json
+E:\Carwale Training\MvcProject\bin\Debug\net6.0\package.json
