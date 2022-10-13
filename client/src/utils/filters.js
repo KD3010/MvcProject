@@ -1,23 +1,23 @@
 export const categories = {
   title: 'Categories',
   values: [
-    { id: 1, title: 'Laptops', isChecked: false },
-    { id: 2, title: 'Smartphones', isChecked: false },
-    { id: 3, title: 'Fragrances', isChecked: false },
-    { id: 4, title: 'Skincare', isChecked: false },
-    { id: 5, title: 'Groceries', isChecked: false },
-    { id: 6, title: 'Home Decoration', isChecked: false },
+    { id: 1, title: 'Laptops', value: 'category laptops' },
+    { id: 2, title: 'Smartphones', value: 'category smartphones' },
+    { id: 3, title: 'Fragrances', value: 'category fragrances' },
+    { id: 4, title: 'Skincare', value: 'category skincare' },
+    { id: 5, title: 'Groceries', value: 'category groceries' },
+    { id: 6, title: 'Home Decoration', value: 'category home-decoration' },
   ],
 };
 
 export const brands = {
   title: 'Brands',
   values: [
-    { id: 1, title: 'Apple', isChecked: false },
-    { id: 2, title: 'Samsung', isChecked: false },
-    { id: 3, title: 'Huawie', isChecked: false },
-    { id: 4, title: 'Oppo', isChecked: false },
-    { id: 5, title: 'Microsoft', isChecked: false },
-    { id: 6, title: 'Infinix', isChecked: false },
+    { id: 1, title: 'Apple', value: 'brand apple' },
+    { id: 2, title: 'Samsung', value: 'brand samsung' },
+    { id: 3, title: 'Huawie', value: 'brand huawie' },
+    { id: 4, title: 'Oppo', value: 'brand oppo' },
+    { id: 5, title: 'Microsoft', value: 'brand microsoft' },
+    { id: 6, title: 'Infinix', value: 'brand infinix' },
   ],
 };

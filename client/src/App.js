@@ -15,12 +15,20 @@ function App() {
   const { page, total, limit, products } = data;
 
   const [url, setUrl] = useState(`https://localhost:7165/products?page=${page}`);
+  const [category, setCategory] = useState([]);
+  const [brand, setBrand] = useState([]);
 
   useEffect(() => {
-    setUrl(`https://localhost:7165/products?page=${page}`);
-    fetchData(url);
-  }, [url, page]);
+    const brandQuery = brand.length > 0 ? brand.join(',') : '';
+    const categoryQuery = category.length > 0 ? category.join(',') : '';
 
+    setUrl(
+      `https://localhost:7165/products?page=${page}&brand=${brandQuery}&category=${categoryQuery}`
+    );
+    fetchData(url);
+  }, [url, page, brand, category]);
+
+  // Fetches the data from API and stores in the state
   async function fetchData(url) {
     const response = await axios.get(url);
     const { products, total } = response.data;
@@ -28,10 +36,21 @@ function App() {
     setData({ ...data, total, products });
   }
 
+  // Handles the filter checkbox changes to return filtered data
   const handleChange = (event) => {
-    if (event.target.checked) console.log(event.target.name);
+    if (event.target.checked) {
+      const arr = event.target.value.split(' ');
+      if (arr[0] === 'brand') setBrand([...brand, arr[1]]);
+      if (arr[0] === 'category') setCategory([...category, arr[1]]);
+    } else {
+      const arr = event.target.value.split(' ');
+      if (arr[0] === 'brand') setBrand((prevState) => prevState.filter((obj) => obj !== arr[1]));
+      if (arr[0] === 'category')
+        setCategory((prevState) => prevState.filter((obj) => obj !== arr[1]));
+    }
   };
 
+  // Handles when clicked on pagination buttons
   const handleClick = (event) => {
     event.preventDefault();
 
