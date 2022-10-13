@@ -14,9 +14,15 @@ public class products : Controller
     {
         _productRepository = new ProductRepository();
     }
-    public IPagedList<ProductModel> Index(string? brand, string? category, int? minPrice, int? maxPrice, int page = 1)
+    public ProductResponse Index(string? brand, string? category, int? minPrice, int? maxPrice, int page = 1)
     {
         var data = _productRepository.GetAllProducts(brand, category, minPrice, maxPrice);
-        return data.ToPagedList(page, LIMIT);
+        int count = data.Count();
+        var products = data.ToPagedList(page, LIMIT);
+
+        return new ProductResponse {
+            total = count,
+            products = products
+        };
     }
 }

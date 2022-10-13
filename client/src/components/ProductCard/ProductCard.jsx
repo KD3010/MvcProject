@@ -4,7 +4,7 @@ import './productcard.scss';
 const ProductCard = (props) => {
   return (
     <div className="product-card">
-      <img src={`${props.thumbnail}`} alt="Product Image" className="product-card-image" />
+      <img src={`${props.thumbnail}`} alt="Product" className="product-card-image" />
       <div className="product-card-description">
         <h4 className="title">{props.title}</h4>
         <p className="description">{props.description}</p>
