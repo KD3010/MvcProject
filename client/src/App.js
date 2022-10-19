@@ -4,6 +4,7 @@ import FilterContainer from './components/FilterContainer/FilterContainer';
 import Footer from './components/Footer/Footer';
 import ProductList from './components/ProdutList/ProductList';
 import axios from 'axios';
+import Loading from './components/Loading/Loading';
 
 function App() {
   const [data, setData] = useState({
@@ -17,6 +18,7 @@ function App() {
   const [url, setUrl] = useState(`https://localhost:7165/products?page=${page}`);
   const [category, setCategory] = useState([]);
   const [brand, setBrand] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const brandQuery = brand.length > 0 ? brand.join(',') : '';
@@ -30,10 +32,12 @@ function App() {
 
   // Fetches the data from API and stores in the state
   async function fetchData(url) {
+    setLoading(true);
     const response = await axios.get(url);
     const { products, total } = response.data;
 
     setData({ ...data, total, products });
+    setLoading(false);
   }
 
   // Handles the filter checkbox changes to return filtered data
@@ -67,11 +71,15 @@ function App() {
 
   return (
     <>
-      <h1 className="heading">MVC Project</h1>
+      <h1 className="heading">All Products</h1>
       <div className="App">
         <div className="App-container">
           <FilterContainer handleChange={handleChange} />
-          <ProductList data={products} />
+          {isLoading ? (
+            <Loading type="bubbles" color="rgb(74, 74, 74)" />
+          ) : (
+            <ProductList data={products} />
+          )}
         </div>
         <Footer handleClick={handleClick} />
       </div>
